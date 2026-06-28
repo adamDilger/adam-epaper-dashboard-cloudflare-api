@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><defs>
+  <pattern id="dither-12" width="2" height="2" patternUnits="userSpaceOnUse">
+    <rect width="2" height="2" fill="white"/>
+    <rect width="0.5" height="0.5" fill="black"/>
+    <rect x="1" y="1" width="0.5" height="0.5" fill="black"/>
+  </pattern>
+  <pattern id="dither-25" width="1" height="1" patternUnits="userSpaceOnUse">
+    <rect width="1" height="1" fill="white"/>
+    <rect width="0.5" height="0.5" fill="black"/>
+  </pattern>
+  <pattern id="dither-37" width="2" height="2" patternUnits="userSpaceOnUse">
+    <rect width="2" height="2" fill="white"/>
+    <rect width="0.5" height="0.5" fill="black"/>
+    <rect x="1" y="0" width="0.5" height="0.5" fill="black"/>
+    <rect x="0.5" y="0.5" width="0.5" height="0.5" fill="black"/>
+    <rect x="1.5" y="1" width="0.5" height="0.5" fill="black"/>
+    <rect x="0" y="1.5" width="0.5" height="0.5" fill="black"/>
+    <rect x="1" y="1.5" width="0.5" height="0.5" fill="black"/>
+  </pattern>
+  <pattern id="dither-50" width="1" height="1" patternUnits="userSpaceOnUse">
+    <rect width="1" height="1" fill="white"/>
+    <rect width="0.5" height="0.5" fill="black"/>
+    <rect x="0.5" y="0.5" width="0.5" height="0.5" fill="black"/>
+  </pattern>
+  <pattern id="dither-62" width="2" height="2" patternUnits="userSpaceOnUse">
+    <rect width="2" height="2" fill="black"/>
+    <rect width="0.5" height="0.5" fill="white"/>
+    <rect x="1" y="0" width="0.5" height="0.5" fill="white"/>
+    <rect x="0.5" y="0.5" width="0.5" height="0.5" fill="white"/>
+    <rect x="1.5" y="1" width="0.5" height="0.5" fill="white"/>
+    <rect x="0" y="1.5" width="0.5" height="0.5" fill="white"/>
+    <rect x="1" y="1.5" width="0.5" height="0.5" fill="white"/>
+  </pattern>
+  <pattern id="dither-75" width="1" height="1" patternUnits="userSpaceOnUse">
+    <rect width="1" height="1" fill="black"/>
+    <rect width="0.5" height="0.5" fill="white"/>
+  </pattern>
+  <pattern id="dither-87" width="2" height="2" patternUnits="userSpaceOnUse">
+    <rect width="2" height="2" fill="black"/>
+    <rect width="0.5" height="0.5" fill="white"/>
+    <rect x="1" y="1" width="0.5" height="0.5" fill="white"/>
+  </pattern>
+</defs><rect y="-0.0032" width="96" height="96" style="fill:none"/><g><circle cx="43.4387" cy="42.8075" r="41.5135" style="fill:white"/></g><g><circle cx="43.4387" cy="42.8075" r="27.7413" style="fill:white"/></g><g><path d="M15.6974,42.8075a27.7413,27.7413,0,0,1,55.4825,0Z" style="fill:white"/></g><g><path d="M29.025,24.6074H20.9176a2.6,2.6,0,0,1,0-5.2H29.025a2.6,2.6,0,0,1,0,5.2Z" style="fill:url(#dither-12)"/></g><g><path d="M65.5113,66.2075H42.8092a2.6,2.6,0,0,1,0-5.2H65.5113a2.6,2.6,0,0,1,0,5.2Z" style="fill:url(#dither-12)"/></g><g><path d="M35.8365,76.6074H23.6744a2.6,2.6,0,0,1,0-5.2H35.8365a2.6,2.6,0,0,1,0,5.2Z" style="fill:url(#dither-12)"/></g><path d="M68.9176,35.0078h4.2158a2.6,2.6,0,0,0,0-5.2H68.9176a2.6,2.6,0,0,0,0,5.2Z" style="fill:url(#dither-25)"/><path d="M12.7183,35.0078H36.6471a2.6,2.6,0,0,0,0-5.2H12.7183a2.6,2.6,0,0,0,0,5.2Z" style="fill:url(#dither-25)"/><path d="M36.8092,24.6074h9.7332a2.5995,2.5995,0,0,1-.0036,5.1989v.05a2.5984,2.5984,0,0,0,.4862,5.1512H58.5387a2.6,2.6,0,0,0,0-5.2H57.89v-.0013a2.5995,2.5995,0,0,1-.0037-5.1989h4.706a2.6,2.6,0,0,0,0-5.2H36.8092a2.6,2.6,0,0,0,0,5.2Z" style="fill:url(#dither-25)"/><path d="M62.7555,50.6074H59.19v-.0011a2.5993,2.5993,0,0,1-.0067-5.1986H72.9713a2.6,2.6,0,0,0,0-5.2h-34.68a2.6,2.6,0,0,0,0,5.2H41.11a2.5993,2.5993,0,0,1-.0068,5.1986v.0011H26.4307v-.0011a2.5993,2.5993,0,0,1-.0067-5.1986h1.79a2.6,2.6,0,0,0,0-5.2H7.481a2.6,2.6,0,0,0,0,5.2H9.3255a2.5993,2.5993,0,0,1-.0066,5.1986v.0011H2.7555a2.6,2.6,0,0,0,0,5.2H16.382a2.5994,2.5994,0,0,1-.0055,5.1987v.001h-.6484a2.6,2.6,0,0,0,0,5.2h17.19a2.6,2.6,0,0,0,0-5.2H29.755v-.001a2.5994,2.5994,0,0,1-.0054-5.1987H62.7555a2.6,2.6,0,0,0,0-5.2Z" style="fill:url(#dither-25)"/><path d="M84.1607,50.6074H73.1334a2.6,2.6,0,0,0,0,5.2H84.1607a2.6,2.6,0,0,0,0-5.2Z" style="fill:url(#dither-25)"/></svg>
