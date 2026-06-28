@@ -12,6 +12,7 @@
  */
 
 import { Resvg, type ResvgRenderOptions } from '@cf-wasm/resvg';
+import { getBomSummaryJson, parseJson } from './bom';
 
 const textSizeBasedOnLength = (text: string, maxFontSize: number): number => {
 	const length = text.length;
@@ -60,6 +61,11 @@ async function rewriteHtml(svg: ArrayBuffer, icon: Response): Promise<ArrayBuffe
 }
 
 async function main(o: { svg: ArrayBuffer; fonts: ArrayBuffer[]; icon: Response }) {
+	const j = await getBomSummaryJson();
+	const p = await parseJson(j);
+
+	console.log(p);
+
 	const opts: ResvgRenderOptions = {
 		background: 'white',
 		textRendering: 0, // optimizeSpeed
