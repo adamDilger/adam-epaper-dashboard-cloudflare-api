@@ -1,0 +1,486 @@
+const a = {
+	breakpoints: {
+		s: 360,
+		m: 768,
+		l: 1280,
+	},
+	palette: {
+		primary: {
+			darkBlue: '#001F43',
+			darkBlueTint: '#0F2C4E',
+			electricBlue: '#2461E5',
+		},
+		secondary: {
+			yellow: '#FBE032',
+			electricBlueDark: '#0C4AD0',
+			lightBlue: '#8AA9ED',
+			lightGreen: '#00A087',
+			focusBlue: '#001F43',
+		},
+		neutral: {
+			black: '#000000',
+			charcoalDark: '#1E1E1E',
+			charcoalMedium: '#4A4A4A',
+			charcoalLight: '#707070',
+			greyDark: '#949494',
+			greyMedium: '#DEDEDE',
+			greyLight: '#F5F5F5',
+			white: '#FFFFFF',
+		},
+		system: {
+			error: '#E61E36',
+			errorBackground: '#FCDEE1',
+			failure: '#E26C00',
+			failureBackground: '#FFF3E8',
+			information: '#2461E5',
+			informationBackground: '#DEE8FB',
+			success: '#00A087',
+			successBackground: '#EAF8F5',
+			warning: '#1E1E1E',
+			warningBackground: '#FBE032',
+		},
+		data: {
+			dataVis: {
+				dataVis1: '#2461E5',
+				dataVis2: '#6642C0',
+				dataVis3: '#00A087',
+				dataVis4: '#DA394D',
+				dataVis5: '#E66500',
+				dataVis6: '#9C2BA8',
+			},
+			uv: {
+				missing: '#949494',
+				low: '#96cc00',
+				moderate: '#fcdc00',
+				high: '#ff9928',
+				veryHigh: '#d8001d',
+				extreme: '#ba00c0',
+			},
+			fireDanger: {
+				missing: '#949494',
+				noRating: '#949494',
+				moderate: '#64BF30',
+				high: '#FEDD3A',
+				extreme: '#F78100',
+				catastrophic: '#AD0909',
+			},
+			rainChance: {
+				percent0: '#FEFEFE',
+				percent20: '#F4FAFD',
+				percent40: '#D7ECF9',
+				percent60: '#AED9F4',
+				percent80: '#7EC3ED',
+				percent100: '#5EB4E9',
+			},
+		},
+	},
+};
+
+const o = {
+	code1: {
+		precis: 'Sunny.',
+	},
+	code2: {
+		precis: 'Clear.',
+	},
+	code3: {
+		precis: 'Mostly sunny.',
+		alternatePrecis: 'Mostly clear.',
+	},
+	code4: {
+		precis: 'Cloudy.',
+	},
+	code5: { precis: '' },
+	code6: {
+		precis: 'Hazy.',
+	},
+	code7: { precis: '' },
+	code8: {
+		precis: 'Light rain.',
+		alternatePrecis: 'Possible rain.',
+	},
+	code9: {
+		precis: 'Windy.',
+	},
+	code10: {
+		precis: 'Fog.',
+	},
+	code11: {
+		precis: 'Shower or two.',
+		alternatePrecis: 'Showers.',
+	},
+	code12: {
+		precis: 'Rain at times.',
+		alternatePrecis: 'Heavy rain.',
+	},
+	code13: {
+		precis: 'Dusty.',
+	},
+	code14: {
+		precis: 'Frost.',
+	},
+	code15: {
+		precis: 'Possible snow.',
+		alternatePrecis: 'Snow.',
+	},
+	code16: {
+		precis: 'Possible storm.',
+	},
+	code17: {
+		precis: 'Possible shower.',
+	},
+	code18: {
+		precis: 'Heavy shower or two.',
+		alternatePrecis: 'Heavy showers.',
+	},
+	code19: {
+		precis: 'Cyclone.',
+	},
+};
+
+export const iconData = [
+	{
+		code: 0,
+		precis: o?.code5?.precis,
+		dayIconName: '',
+		nightIconName: '',
+		dayMood: {
+			imageName: '',
+			startGradient: a.palette.neutral.greyLight,
+			endGradient: a.palette.neutral.greyLight,
+		},
+		nightMood: {
+			imageName: '',
+			startGradient: a.palette.neutral.greyLight,
+			endGradient: a.palette.neutral.greyLight,
+		},
+	},
+	{
+		code: 1,
+		precis: o?.code1?.precis,
+		dayIconName: 'sunny',
+		nightIconName: 'clear-night',
+		dayMood: {
+			imageName: 'sunny-day',
+			startGradient: '#4ea5fb',
+			endGradient: '#aad5ff',
+		},
+		nightMood: {
+			imageName: 'clear-night',
+			startGradient: '#001e3c',
+			endGradient: '#003b71',
+		},
+		nightIconMoodName: 'clear-night-mood',
+	},
+	{
+		code: 2,
+		precis: o?.code2?.precis,
+		dayIconName: 'sunny',
+		nightIconName: 'clear-night',
+		dayMood: {
+			imageName: 'sunny-day',
+			startGradient: '#4ea5fb',
+			endGradient: '#aad5ff',
+		},
+		nightMood: {
+			imageName: 'clear-night',
+			startGradient: '#001e3c',
+			endGradient: '#003b71',
+		},
+		nightIconMoodName: 'clear-night-mood',
+	},
+	{
+		code: 3,
+		precis: o?.code3?.precis,
+		alternatePrecis: o?.code3?.alternatePrecis,
+		dayIconName: 'mostly-sunny',
+		alternateDayIconName: 'partly-cloudy',
+		nightIconName: 'mostly-clear-night',
+		alternateNightIconName: 'partly-cloudy-night',
+		dayMood: {
+			imageName: 'mostly-sunny-day',
+			startGradient: '#61b0ff',
+			endGradient: '#d4ebff',
+		},
+		nightMood: {
+			imageName: 'mostly-clear-night',
+			startGradient: '#001e3c',
+			endGradient: '#003b71',
+		},
+		dayIconMoodName: 'mostly-sunny-mood',
+		alternativeDayIconMoodName: 'partly-cloudy-mood',
+	},
+	{
+		code: 4,
+		precis: o?.code4?.precis,
+		dayIconName: 'cloudy',
+		nightIconName: 'cloudy-night',
+		dayMood: {
+			imageName: 'cloudy-day',
+			startGradient: '#d5dadd',
+			endGradient: '#eeeeee',
+		},
+		nightMood: {
+			imageName: 'cloudy-night',
+			startGradient: '#081623',
+			endGradient: '#384e60',
+		},
+		dayIconMoodName: 'cloudy-mood',
+	},
+	{
+		code: 5,
+		precis: o?.code5?.precis,
+		dayIconName: 'missing',
+		nightIconName: 'missing-night',
+		dayMood: {
+			imageName: '',
+			startGradient: a.palette.neutral.greyMedium,
+			endGradient: a.palette.neutral.greyMedium,
+		},
+		nightMood: {
+			imageName: '',
+			startGradient: a.palette.neutral.charcoalMedium,
+			endGradient: a.palette.neutral.charcoalMedium,
+		},
+	},
+	{
+		code: 6,
+		precis: o?.code6?.precis,
+		dayIconName: 'haze',
+		nightIconName: 'haze-night',
+		dayMood: {
+			imageName: 'haze-day',
+			startGradient: '#dce2e3',
+			endGradient: '#ede5d1',
+		},
+		nightMood: {
+			imageName: 'haze-night',
+			startGradient: '#3a3322',
+			endGradient: '#3c3c3c',
+		},
+		nightIconMoodName: 'haze-night-mood',
+	},
+	{
+		code: 7,
+		precis: o?.code7?.precis,
+		dayIconName: 'missing',
+		nightIconName: 'missing-night',
+		dayMood: {
+			imageName: '',
+			startGradient: a.palette.neutral.greyDark,
+			endGradient: a.palette.neutral.greyDark,
+		},
+		nightMood: {
+			imageName: '',
+			startGradient: '#a4a4a4',
+			endGradient: '#a4a4a4',
+		},
+	},
+	{
+		code: 8,
+		precis: o?.code8?.precis,
+		alternatePrecis: o?.code8?.alternatePrecis,
+		dayIconName: 'light-rain',
+		nightIconName: 'light-rain-night',
+		dayMood: {
+			imageName: 'light-rain-day',
+			startGradient: '#cccccc',
+			endGradient: '#eaeaea',
+		},
+		nightMood: {
+			imageName: 'light-rain-night',
+			startGradient: '#081623',
+			endGradient: '#414e5a',
+		},
+		dayIconMoodName: 'light-rain-mood',
+	},
+	{
+		code: 9,
+		precis: o?.code9?.precis,
+		dayIconName: 'wind',
+		nightIconName: 'wind-night',
+		dayMood: {
+			imageName: 'wind-day',
+			startGradient: '#c5e2fd',
+			endGradient: '#d4dee6',
+		},
+		nightMood: {
+			imageName: 'wind-night',
+			startGradient: '#081623',
+			endGradient: '#384e60',
+		},
+		dayIconMoodName: 'wind-mood',
+	},
+	{
+		code: 10,
+		precis: o?.code10?.precis,
+		dayIconName: 'fog',
+		nightIconName: 'fog-night',
+		dayMood: {
+			imageName: 'fog-day',
+			startGradient: '#cfd8df',
+			endGradient: '#f2f5f7',
+		},
+		nightMood: {
+			imageName: 'fog-night',
+			startGradient: '#081623',
+			endGradient: '#384e60',
+		},
+		nightIconMoodName: 'fog-night-mood',
+	},
+	{
+		code: 11,
+		precis: o?.code11?.precis,
+		alternatePrecis: o?.code11?.alternatePrecis,
+		dayIconName: 'showers',
+		nightIconName: 'showers-night',
+		dayMood: {
+			imageName: 'showers-day',
+			startGradient: '#d9eafa',
+			endGradient: '#d0dde8',
+		},
+		nightMood: {
+			imageName: 'showers-night',
+			startGradient: '#081623',
+			endGradient: '#414e5a',
+		},
+	},
+	{
+		code: 12,
+		precis: o?.code12?.precis,
+		alternatePrecis: o?.code12?.alternatePrecis,
+		dayIconName: 'rain',
+		nightIconName: 'rain-night',
+		dayMood: {
+			imageName: 'rain-day',
+			startGradient: '#b2b4b5',
+			endGradient: '#c6c8c9',
+		},
+		nightMood: {
+			imageName: 'rain-night',
+			startGradient: '#081623',
+			endGradient: '#414e5a',
+		},
+		dayIconMoodName: 'rain-mood',
+	},
+	{
+		code: 13,
+		precis: o?.code13?.precis,
+		dayIconName: 'dust',
+		nightIconName: 'dust-night',
+		dayMood: {
+			imageName: 'dust-day',
+			startGradient: '#fae9c1',
+			endGradient: '#b9d8ea',
+		},
+		nightMood: {
+			imageName: 'dust-night',
+			startGradient: '#2e2614',
+			endGradient: '#37393b',
+		},
+		dayIconMoodName: 'dust-mood',
+	},
+	{
+		code: 14,
+		precis: o?.code14?.precis,
+		dayIconName: 'frost',
+		nightIconName: 'frost-night',
+		dayMood: {
+			imageName: 'frost-day',
+			startGradient: '#ccddec',
+			endGradient: '#eef7fa',
+		},
+		nightMood: {
+			imageName: 'frost-night',
+			startGradient: '#081623',
+			endGradient: '#384e60',
+		},
+		dayIconMoodName: 'frost-mood',
+		nightIconMoodName: 'frost-night-mood',
+	},
+	{
+		code: 15,
+		precis: o?.code15?.precis,
+		alternatePrecis: o?.code15?.alternatePrecis,
+		dayIconName: 'snow',
+		nightIconName: 'snow-night',
+		dayMood: {
+			imageName: 'snow-day',
+			startGradient: '#d0dbdf',
+			endGradient: '#f0f0f0',
+		},
+		nightMood: {
+			imageName: 'snow-night',
+			startGradient: '#081623',
+			endGradient: '#384e60',
+		},
+		dayIconMoodName: 'snow-mood',
+		nightIconMoodName: 'snow-night-mood',
+	},
+	{
+		code: 16,
+		precis: o?.code16?.precis,
+		dayIconName: 'storms',
+		nightIconName: 'storms-night',
+		dayMood: {
+			imageName: 'storms-day',
+			startGradient: '#878d95',
+			endGradient: '#adb6bc',
+		},
+		nightMood: {
+			imageName: 'storms-night',
+			startGradient: '#525252',
+			endGradient: '#333333',
+		},
+		dayIconMoodName: 'storms-mood',
+	},
+	{
+		code: 17,
+		precis: o?.code17?.precis,
+		dayIconName: 'light-showers',
+		nightIconName: 'light-showers-night',
+		dayMood: {
+			imageName: 'light-showers-day',
+			startGradient: '#d9eafa',
+			endGradient: '#d0dde8',
+		},
+		nightMood: {
+			imageName: 'light-showers-night',
+			startGradient: '#081623',
+			endGradient: '#414e5a',
+		},
+	},
+	{
+		code: 18,
+		precis: o?.code18?.precis,
+		alternatePrecis: o?.code18?.alternatePrecis,
+		dayIconName: 'heavy-showers',
+		nightIconName: 'heavy-showers-night',
+		dayMood: {
+			imageName: 'heavy-showers-day',
+			startGradient: '#bdd2e6',
+			endGradient: '#d4dee6',
+		},
+		nightMood: {
+			imageName: 'heavy-showers-night',
+			startGradient: '#081623',
+			endGradient: '#414e5a',
+		},
+	},
+	{
+		code: 19,
+		precis: o?.code19?.precis,
+		dayIconName: 'cyclone',
+		nightIconName: 'cyclone-night',
+		dayMood: {
+			imageName: 'cyclone-day',
+			startGradient: '#878d95',
+			endGradient: '#adb6bc',
+		},
+		nightMood: {
+			imageName: 'cyclone-night',
+			startGradient: '#525252',
+			endGradient: '#333333',
+		},
+	},
+];

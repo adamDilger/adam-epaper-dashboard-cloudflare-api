@@ -7,7 +7,7 @@ type RainSummary = {
 	chance75Percent: number;
 };
 
-type BomSummary = {
+export type BomSummary = {
 	locationName: string;
 	currentTemp: string;
 	currentFeelsLikeTemp: string;
@@ -86,11 +86,11 @@ export async function parseJson(o: {
 
 	const currentTemp = toSafeTempFloat(weather.obs.temp.dry_bulb_1min_cel);
 	const currentFeelsLikeTemp = toSafeTempFloat(weather.obs.temp.apparent_1min_cel);
-	const todaysMax = toSafeTempFloat(weather.obs.temp.dry_bulb_max_cel);
+	const todaysMax = Math.floor(forecastDaily.fcst.daily[0].atm.surf_air.temp_max_cel || 0) + '°';
 
 	const summary = forecastText.fcst.daily[0].atm.surf_air.weather.precis_text;
 	const iconCode = forecastDaily.fcst.daily[0].atm.surf_air.weather.icon_code;
-	const humidity = weather.obs.temp.rel_hum_percent.toFixed(1);
+	const humidity = Math.round(weather.obs.temp.rel_hum_percent).toString();
 
 	const chanceRain25 = forecastDaily.fcst.daily[0].atm.surf_air.precip.exceeding_25percentchance_total_mm;
 	const chanceRain75 = forecastDaily.fcst.daily[0].atm.surf_air.precip.exceeding_75percentchance_total_mm;
