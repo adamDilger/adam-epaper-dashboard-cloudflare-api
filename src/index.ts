@@ -14,6 +14,7 @@
 import { Resvg, type ResvgRenderOptions } from '@cf-wasm/resvg';
 import { BomSummary, getBomSummaryJson, parseJson } from './bom';
 import { iconData } from './bom/icons';
+import type { RenderedImage } from '@cf-wasm/resvg/legacy';
 
 const textSizeBasedOnLength = (text: string, maxFontSize: number): number => {
 	const length = text.length;
@@ -147,7 +148,11 @@ async function rewriteHtml(data: BomSummary, svg: ArrayBuffer, icon: Response): 
 	}
 */
 
-async function main(o: { svg: ArrayBuffer; fonts: ArrayBuffer[]; getIcon: (iconName: number) => Promise<Response> }) {
+async function main(o: {
+	svg: ArrayBuffer;
+	fonts: ArrayBuffer[];
+	getIcon: (iconName: number) => Promise<Response>;
+}): Promise<RenderedImage> {
 	const j = await getBomSummaryJson();
 	const p = await parseJson(j);
 
@@ -167,14 +172,36 @@ async function main(o: { svg: ArrayBuffer; fonts: ArrayBuffer[]; getIcon: (iconN
 	const svg = await rewriteHtml(p, o.svg, icon);
 	const resvg = new Resvg(new Uint8Array(svg), opts);
 
-	const pngData = resvg.render();
-	const pngBuffer = pngData.asPng();
+	return resvg.render();
+}
 
-	console.info('Original SVG Size:', `${resvg.width} x ${resvg.height}`);
-	console.info('Output PNG Size  :', `${pngData.width} x ${pngData.height}`);
-	console.log('file size in MB', pngBuffer.byteLength / 1024 / 1024);
+function convertRenderedImageToBinary(pngData: RenderedImage): ArrayBuffer {
+	const width = pngData.width;
+	const height = pngData.height;
+	const pixels = pngData.pixels;
 
-	return pngBuffer;
+	// const pngBuffer = pngData.asPng();
+	// console.info('Original SVG Size:', `${resvg.width} x ${resvg.height}`);
+	// console.info('Output PNG Size  :', `${pngData.width} x ${pngData.height}`);
+	// console.log('file size in MB', pngBuffer.byteLength / 1024 / 1024);
+	// return pngBuffer;
+
+	const output = new Uint8Array((width * height) / 8);
+
+	for (let i = 0; i < width * height; i++) {
+		const r = pixels[i * 4];
+
+		const isBlack = r === 0;
+
+		// fill the specific bit in
+		const offset = i % 8;
+		const byteIndex = Math.floor(i / 8);
+		if (isBlack) {
+			output[byteIndex] |= 1 << (7 - offset);
+		}
+	}
+
+	return output.buffer;
 }
 
 function getIconNameFromCode(iconCode: number): string {
@@ -231,10 +258,12 @@ export default {
 			},
 		});
 
-		return new Response(image, {
-			headers: {
-				'Content-Type': 'image/png',
-			},
-		});
+		if (request.headers.get('Accept') === 'application/octet-stream') {
+			return new Response(convertRenderedImageToBinary(image), {
+				headers: { 'Content-Type': 'application/octet-stream' },
+			});
+		} else {
+			return new Response(image.asPng(), { headers: { 'Content-Type': 'image/png' } });
+		}
 	},
 } satisfies ExportedHandler<Env>;
